@@ -110,3 +110,38 @@ impl Drop for ThreadPool {
         println!("{}","Shutting down is complete.".green());
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn new_pool_length_equal() {
+        let pool = ThreadPool::new(5);
+        assert_eq!(pool.workers.len(), 5);
+    }
+
+    #[test]
+    fn new_pool_length_equal_not() {
+        let pool = ThreadPool::new(5);
+        assert_ne!(pool.workers.len(), 6);
+    }
+
+    #[test]
+    fn new_pool_workers_ids_equal() {
+        let pool = ThreadPool::new(3);
+        assert_eq!(pool.workers[0].id, 0 as usize);
+        assert_eq!(pool.workers[1].id, 1 as usize);
+        assert_eq!(pool.workers[2].id, 2 as usize);
+    }
+
+    #[test]
+    fn new_pool_workers_ids_equal_not() {
+        let pool = ThreadPool::new(3);
+        assert_ne!(pool.workers[0].id, 1 as usize);
+        assert_ne!(pool.workers[1].id, 2 as usize);
+        assert_ne!(pool.workers[2].id, 0 as usize);
+    }
+
+
+}
