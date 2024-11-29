@@ -1,0 +1,15 @@
+@host = localhost
+@port = 7878
+
+###
+# 404
+GET http://{{host}}:{{port}}/404
+
+
+###
+# Main root
+GET http://{{host}}:{{port}}
+
+###
+# Sleep
+GET http://{{host}}:{{port}}/sleep

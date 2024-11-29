@@ -1,0 +1,1 @@
+![Threadpool struct](<Screenshot from 2024-11-28 17-35-04.png>)
